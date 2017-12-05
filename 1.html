@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#dd{color:red;}
+	</style>
+</head>
+<body>
+	<div id="aa"></div>
+	<script src="browser.min.js"></script>
+	<script src="react.js"></script>
+	<script src="react-dom.js"></script>
+	<script type="text/babel">
+	var ddd=React.createElement('b',{id:'dd'},'mmmm');
+	// ES5
+	// var Dd=React.createClass({
+	// 	render:function(){
+	// 		return (<p>{this.state.mml}{this.props.title}</p>
+	// 			)
+				
+	// 	},
+	// 	getInitialState:function(){
+	// 		return {
+	// 			mml:'000'
+			
+	// 		}
+	// 	},
+	// 	getDefaulProps:function(){
+	// 		return{
+	// 			title:'moren'
+	// 		}
+	// 	}
+	// });
+
+
+	// ES6
+	class Dd extends React.Component{
+		constructor(props){
+			super(props);
+			this.state={
+				mag:'aaa',
+				aa:'bb',
+				arr:['aaa','bbb','ccc'],
+				dian:true,
+				inp:'',
+				pp:[]
+			}
+			this.tiao=this.tiao.bind(this)
+			this.bbb=this.bbb.bind(this)
+			this.bc=this.bc.bind(this)
+			this.bn=this.bn.bind(this)
+			this.shan=this.shan.bind(this)
+			this.xui=this.xui.bind(this)
+		}
+		render(){
+			let {mag,aa}=this.state;
+			let lis=this.state.arr.map((v,i)=>{
+				return <li key={i}>{v}</li>
+			});
+			let ap=null;
+			if(this.state.dian){
+				 ap=<div><p>123</p><p>321</p></div>
+			}else{
+				 ap=<div><p>321</p><p>123</p></div>
+			};
+			let lii=this.state.pp.map((v,i)=>{
+				return <li key={i}>{v}<button onClick={()=>{this.shan({i})}}>删除</button><button onClick={()=>{this.xui({i})}}>修改</button></li>
+			});
+			return(
+				<div>
+				<p onClick={this.tiao}>{mag}{aa}{this.props.title}</p>
+				<p onClick={()=>this.tiao(11)}>{mag}</p>
+				<p onClick={(e)=>this.tiao(111,e)}>{aa}{this.props.title}</p>
+				<ul>{lis}</ul>
+				<button onClick={this.bbb}>切换</button>
+				{ap}
+				<input value={this.state.inp} onChange={this.bc}/>
+				<button onClick={this.bn}>加</button>
+				<ul>{lii}</ul>
+				</div>
+				)
+		}
+		bbb(){
+			this.setState({
+				dian:!this.state.dian
+			})
+		}
+		bc(e){
+			this.setState({
+				inp:e.target.value
+			})
+		}
+		bn(){
+			if(this.state.inp!=''){
+				this.state.pp.push(this.state.inp)
+				this.setState({
+					pp:this.state.pp,
+					inp:''
+				})
+			}else{
+				alert('不能为空')
+			}
+			
+		}
+		tiao(a,e){
+			alert(e)
+			alert(a,1)
+		}
+		shan(e){
+			this.state.pp.splice(e.i,1)
+			this.setState({
+				pp:this.state.pp
+			})
+		}
+		xui(e){
+			var pr=prompt()
+			if(pr!=''){
+				this.state.pp.splice(e.i,1,pr)
+				this.setState({
+					pp:this.state.pp
+				})
+			}else{
+				pp:this.state.pp
+			}
+		}
+		
+	}
+	Dd.defaulProps={
+		title:'moren'
+	}
+	ReactDOM.render(
+		<div>
+			<Dd title="ccc"></Dd>
+			
+		</div>,
+
+		document.getElementById('aa')
+	)
+	</script>
+</body>
+</html>
